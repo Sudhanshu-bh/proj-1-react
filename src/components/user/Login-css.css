@@ -1,0 +1,43 @@
+.row {
+    --bs-gutter-x: 3.5rem;
+}
+
+form.container {
+    color: #184e77;
+}
+
+.invalid-credentials-msg {
+    color: #FF3333;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.button-width-css {
+    width: 30%;
+}
+
+.login-button-css {
+    color: #95d5b2;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.LoaderButton .spinning {
+    animation: spin 1s infinite linear;
+}
+  
+@keyframes spin {
+    from {
+      transform: scale(1) rotate(0deg);
+    }
+    to {
+      transform: scale(1) rotate(360deg);
+    }
+}
+
+.form-control.invalid-field-color {
+    border: 1px solid #FF3333;
+}
+
+.form-control.email-green-color {
+    border: 1px solid green;
+}
