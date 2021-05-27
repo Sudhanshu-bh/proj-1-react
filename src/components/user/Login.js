@@ -19,7 +19,7 @@ function Login() {
     const [makeEmailGreen, setmakeEmailGreen] = useState(false);
     const [isPassEmpty, setisPassEmpty] = useState(false);
 
-    function valid(item, type, event) {
+    function valid(item, type) {
 
         let itemValue = item.target.value;
         switch (type) {

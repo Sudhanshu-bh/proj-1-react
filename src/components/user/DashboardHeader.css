@@ -1,0 +1,34 @@
+.mySidebarOpened.w3-sidebar {
+    width: 18%;
+    transition: width 0.5s;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .mySidebarOpened.w3-sidebar {
+      width: 100%;
+      transition: width 0.3s;
+    }
+  }
+  
+  .mySidebarClosed.w3-sidebar {
+    width: 0;
+    transition: width 0.3s;
+  }
+  
+  .w3-sidebar {
+    background-color:deepskyblue;
+  }
+  
+  .hamburger-css {
+    align-items: center;
+    text-align: center;
+    background-color: #0dcaf0;
+  }
+  
+  .dash-header {
+    text-align: center;
+  }
+  
+  .settings-icon {
+    width: 100%;
+  }
