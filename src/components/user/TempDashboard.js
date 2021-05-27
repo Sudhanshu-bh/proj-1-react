@@ -34,6 +34,51 @@ function TempDashboard() {
     function submitPassChange(event) {
 
         event.preventDefault();
+
+        if(newPassword1 !== newPassword2) {
+            alert("New passwords do not match!")
+            return
+        }
+
+        let data = {};
+        data.User = localStorage.isLoggedInLS;
+        data.CurrPass = currPassword;
+        data.NewPass = newPassword2;
+
+        let url = "/api/changePass";
+        let params = {
+            method: 'post',
+            body: JSON.stringify(data),
+        };
+
+        let response;
+        let resStatus = 0;
+
+        (async function() {
+            try {
+                response = await fetch(url, params);
+
+                resStatus = response.status;
+
+                switch (resStatus) {
+                    case 200:
+                        alert("Password changed successfully!")
+                        break
+                    case 401:
+                        alert("Invalid current password")
+                        break
+                    case 500:
+                        alert("Something went wrong. Please try again later.")
+                        break
+                    default:
+                        console.log("Default (unhandled) case.")
+                        break;
+                }
+            } catch (error) {
+                console.log("Failure, there was some error...", error);
+            }
+        })()
+        
     }
 
     return (
