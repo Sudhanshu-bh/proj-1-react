@@ -49,25 +49,25 @@ function TempDashboard(props) {
 
             <div className="container form mt-5 dashboard">
                 <div className="row">
-                    <div className="col-md-10 login-form-1 mx-auto my-1 border border-primary rounded shadow">
+                    <div className="col-md-9 login-form-1 mx-auto my-1 border border-primary rounded shadow">
                         <div className="col-12 text-center p-4">
                             <h3>Change Password</h3>
 
-                            <div className="row form-group mt-5 d-flex align-items-center">
+                            <div className="row form-group mt-5 d-flex align-items-center justify-content-center">
                                 <label htmlFor="currPass" className="form-label label-custom-css">
                                     Current Password
                                 </label>
                                 <input type="password" className="form-control input-custom-css" id="exammpleInputEmail1" aria-describedby="basic-addon1" placeholder="Enter current password" />
                             </div>
 
-                            <div className="row form-group mt-5 d-flex align-items-center">
+                            <div className="row form-group mt-5 d-flex align-items-center justify-content-center">
                                 <label htmlFor="currPass" className="form-label label-custom-css">
                                     New Password
                                 </label>
                                 <input type="password" className="form-control input-custom-css" id="exammpleInputEmail1" aria-describedby="basic-addon1" placeholder="Enter new password" />
                             </div>
 
-                            <div className="row form-group mt-5 d-flex align-items-center">
+                            <div className="row form-group mt-5 d-flex align-items-center justify-content-center">
                                 <label htmlFor="currPass" className="form-label label-custom-css">
                                     Confirm New Password
                                 </label>
