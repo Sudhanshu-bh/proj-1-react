@@ -21,8 +21,6 @@ function Login() {
 
     function valid(item, type, event) {
 
-        
-
         let itemValue = item.target.value;
         switch (type) {
             case "email": {
