@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Login-css.css'
+import './Login.css'
 import { useHistory } from 'react-router-dom'
 import LoaderButton from './LoaderButton'
 
@@ -126,7 +126,7 @@ function Login() {
         data.user = email;
         data.password = password;
 
-        let url = "/validate/login";
+        let url = "/validate/credentials";
         let params = {
             method: 'post',
             body: JSON.stringify(data),
