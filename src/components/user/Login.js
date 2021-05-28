@@ -145,7 +145,7 @@ function Login() {
                     case 200:
                         setIsLoading(false);
                         localStorage.setItem('isLoggedInLS', email);
-                        history.push("/TempDashboard");
+                        history.push("/Dashboard");
                         break;
                     case 400:
                         setIsLoading(false);
@@ -185,7 +185,7 @@ function Login() {
     function checkIfAlreadyLoggedIn() {
         let logged = localStorage.getItem('isLoggedInLS');
         if (logged) {
-            history.push('/TempDashboard');
+            history.push('/dashboard');
         }
     }
 

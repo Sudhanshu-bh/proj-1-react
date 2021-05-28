@@ -1,6 +1,6 @@
 .mySidebarOpened.w3-sidebar {
     width: 18%;
-    transition: width 0.5s;
+    transition: width 0.4s;
   }
   
   @media screen and (max-width: 576px) {
@@ -18,7 +18,7 @@
   .w3-sidebar {
     background-color:deepskyblue;
   }
-  
+
   .hamburger-css {
     align-items: center;
     text-align: center;

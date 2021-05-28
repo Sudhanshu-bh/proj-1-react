@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './TempDashboard.css'
+import './ChangePassword.css'
 import DashboardHeader from './DashboardHeader'
 
-function TempDashboard() {
+function ChangePassword() {
 
     const [currPassword, setcurrPassword] = useState("");
     const [newPassword1, setnewPassword1] = useState("");
@@ -95,7 +95,7 @@ function TempDashboard() {
                                 <label htmlFor="currPass" className="form-label label-custom-css">
                                     Current Password
                                 </label>
-                                <input type="password" className="form-control input-custom-css" id="exammpleInputEmail1"
+                                <input type="password" className="form-control input-custom-css"
                                     onChange={(item) => store(item, "currPassword")}
                                     aria-describedby="basic-addon1" placeholder="Enter current password"
                                 />
@@ -105,9 +105,9 @@ function TempDashboard() {
                                 <label htmlFor="currPass" className="form-label label-custom-css">
                                     New Password
                                 </label>
-                                <input type="password" className="form-control input-custom-css" id="exammpleInputEmail1"
+                                <input type="password" className="form-control input-custom-css"
                                     onChange={(item) => store(item, "newPassword1")}
-                                    aria-describedby="basic-addon1" placeholder="Enter new password"
+                                    aria-describedby="basic-addon2" placeholder="Enter new password"
                                 />
                             </div>
 
@@ -115,9 +115,9 @@ function TempDashboard() {
                                 <label htmlFor="currPass" className="form-label label-custom-css">
                                     Confirm New Password
                                 </label>
-                                <input type="password" className="form-control input-custom-css" id="exammpleInputEmail1"
+                                <input type="password" className="form-control input-custom-css"
                                     onChange={(item) => store(item, "newPassword2")}
-                                    aria-describedby="basic-addon1" placeholder="Re-enter new password" />
+                                    aria-describedby="basic-addon3" placeholder="Re-enter new password" />
                             </div>
 
                             <div className="form-group mt-4 mx-auto py-4 text-center">
@@ -138,4 +138,4 @@ function TempDashboard() {
     )
 }
 
-export default TempDashboard
+export default ChangePassword

@@ -3,7 +3,8 @@ import Home from "./components/Home";
 import Login from './components/user/Login';
 //import Signup from './components/user/Signup';
 import { Route } from "react-router-dom";
-import TempDashboard from './components/user/TempDashboard';
+import Dashboard from './components/user/Dashboard';
+import ChangePassword from './components/user/ChangePassword'
 
 function App() {
 
@@ -13,9 +14,10 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         
-        <Route exact path="/TempDashboard" component={TempDashboard} />
+        <Route exact path="/dashboard" component={Dashboard} />
         
         {/* <Route exact path="/signup" component={Signup} /> */}
+        <Route exact path="/changePassword" component={ChangePassword} />
       
     </div>
   );
