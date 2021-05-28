@@ -1,4 +1,9 @@
-.mySidebarOpened.w3-sidebar {
+  .w3-sidebar {
+    height: calc(100% - 52px);
+    top: 52px;
+  }
+
+  .mySidebarOpened.w3-sidebar {
     width: 18%;
     transition: width 0.4s;
   }
@@ -10,21 +15,24 @@
     }
   }
   
-  .mySidebarClosed.w3-sidebar {
+  .mySidebarClosed.w3-sidebar.w3-bar-block {
     width: 0;
+    height: calc(100% - 52px);
     transition: width 0.3s;
   }
   
-  .w3-sidebar {
+  .w3-sidebar.sidebar-custom-css {
     background-color:deepskyblue;
+    position: absolute!important;
+    height: inherit;
   }
 
   .hamburger-css {
     align-items: center;
     text-align: center;
-    background-color: #0dcaf0;
+    /* background-color: #0dcaf0; */
   }
-  
+
   .dash-header {
     text-align: center;
   }

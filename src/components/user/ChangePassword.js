@@ -186,7 +186,7 @@ function ChangePassword() {
         <>
             <DashboardHeader />
 
-            <div className="container form mt-5 dashboard">
+            <div className="container form mt-5 change-password main-content-css">
                 <div className="row">
                     <div className="col-md-9 login-form-1 mx-auto my-1 border border-primary rounded shadow">
                         <div className="col-12 text-center p-4">
@@ -242,8 +242,6 @@ function ChangePassword() {
                     </div>
                 </div>
             </div>
-
-
 
         </>
     )
