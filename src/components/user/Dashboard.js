@@ -6,7 +6,7 @@ function Dashboard() {
         <>
             <DashboardHeader />
 
-            <div className="w-25 p-4 m-auto">
+            <div className="w-25 p-4 m-auto main-content-css">
                 <span className="h4">Welcome to dashboard.</span>
 
             </div>

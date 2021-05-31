@@ -1,36 +1,53 @@
-  .w3-sidebar {
-    height: calc(100% - 52px);
-    top: 52px;
+  :root {
+    --navbarHeight: 61px;
   }
-
-  .mySidebarOpened.w3-sidebar {
+  
+  .sidebar-custom-css {
+    height: calc(100% - var(--navbarHeight));
+    top: var(--navbarHeight);
+    position: fixed;
+    overflow: auto;
+  }
+  
+  .mySidebarOpened {
     width: 18%;
     transition: width 0.4s;
   }
   
   @media screen and (max-width: 576px) {
-    .mySidebarOpened.w3-sidebar {
+    .mySidebarOpened {
       width: 100%;
       transition: width 0.3s;
     }
   }
-  
-  .mySidebarClosed.w3-sidebar.w3-bar-block {
+
+  @media screen and (max-width: 800px) {
+    .mySidebarOpened {
+      width: 30%;
+      transition: width 0.3s;
+    }
+  }
+
+  .mySidebarClosed.w3-bar-block {
     width: 0;
-    height: calc(100% - 52px);
+    height: calc(100% - var(--navbarHeight));
     transition: width 0.3s;
   }
   
-  .w3-sidebar.sidebar-custom-css {
+  .sidebar-custom-css {
     background-color:deepskyblue;
-    position: absolute!important;
-    height: inherit;
+  }
+
+  .page-header {
+    background: white;
+    opacity: 0.95;
   }
 
   .hamburger-css {
     align-items: center;
     text-align: center;
-    /* background-color: #0dcaf0; */
+    line-height: 3rem;
+    font-size: 2rem;
   }
 
   .dash-header {
@@ -38,5 +55,22 @@
   }
   
   .settings-icon {
+    width: 100%;
+  }
+
+  
+  
+  .main-content-css {
+    position: absolute;
+    right: 0;
+    top: var(--navbarHeight);
+
+  }
+
+  .main-content-css.shift {
+    width: 82%!important;
+  }
+
+  .main-content-css.center {
     width: 100%;
   }
