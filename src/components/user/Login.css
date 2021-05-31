@@ -11,27 +11,10 @@ form.container {
     font-family: 'Quicksand', sans-serif;
 }
 
-.button-width-css {
-    width: 30%;
-}
-
 .login-button-css {
     color: #95d5b2;
     display: inline-block;
     font-weight: bold;
-}
-
-.LoaderButton .spinning {
-    animation: spin 1s infinite linear;
-}
-  
-@keyframes spin {
-    from {
-      transform: scale(1) rotate(0deg);
-    }
-    to {
-      transform: scale(1) rotate(360deg);
-    }
 }
 
 .form-control.invalid-field-color {

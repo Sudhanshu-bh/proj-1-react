@@ -58,7 +58,8 @@
     opacity: 0.95;
   }
 
-  .hamburger-css {
+  .w3-button.hamburger-css {
+    width: 7.3%;
     align-items: center;
     text-align: center;
     line-height: 3rem;
@@ -69,8 +70,19 @@
     text-align: center;
   }
   
+  .dropdown.dropdown-css {
+    width: 7.3%;
+  }
+
   .settings-icon {
     width: 100%;
+  }
+  .settings-icon:hover {
+    background-color: #ccc;
+  }
+  .settings-icon:focus {
+    background-color: #ccc;
+    box-shadow: none!important;
   }
   
   /* CSS for main content of any page */

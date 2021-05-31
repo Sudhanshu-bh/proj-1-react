@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import './ChangePassword.css'
 import Header from './components/Header'
 import { SidenavContext } from './components/SidenavContext'
+import LoaderButton from '../LoaderButton'
+import Toast from '../../resuable/Toast'
 
 function ChangePassword() {
 
@@ -21,6 +23,10 @@ function ChangePassword() {
     const [invalidCurrPassMsg, setinvalidCurrPassMsg] = useState("")
     const [invalidNewPassMsg, setinvalidNewPassMsg] = useState("")
     const [PasswordsDontMatch, setPasswordsDontMatch] = useState("")
+
+    const [isLoading, setisLoading] = useState(false)
+
+    const [toast, settoast] = useState({text:"", type: "success"})  // type can be success, danger, or anything else.
 
     const [SidenavOpen] = useContext(SidenavContext)
 
@@ -137,7 +143,7 @@ function ChangePassword() {
 
     function submitPassChange(event) {
 
-        event.preventDefault();
+        event.preventDefault()
 
         if (newPassword1 !== newPassword2) {
             alert("New passwords do not match!")
@@ -158,6 +164,8 @@ function ChangePassword() {
         let response;
         let resStatus = 0;
 
+        setisLoading(true);
+
         (async function () {
             try {
                 response = await fetch(url, params);
@@ -166,13 +174,13 @@ function ChangePassword() {
 
                 switch (resStatus) {
                     case 200:
-                        alert("Password changed successfully!")
+                        settoast({text: "Password changed successfully!", type: "success"})
                         break
                     case 401:
-                        alert("Invalid current password")
+                        setinvalidCurrPassMsg("Please enter the correct password of your account.")
                         break
                     case 500:
-                        alert("Something went wrong. Please try again later.")
+                        settoast({text: "Something went wrong. Please try again later.", type: "danger"})
                         break
                     default:
                         console.log("Default (unhandled) case.")
@@ -181,6 +189,7 @@ function ChangePassword() {
             } catch (error) {
                 console.log("Failure, there was some error...", error);
             }
+            setisLoading(false)
         })()
 
     }
@@ -235,18 +244,23 @@ function ChangePassword() {
                                     <div className="invalid-input-msg">{PasswordsDontMatch} &nbsp; </div>
                                 </div>
 
-                                <div className="form-group mt-4 mx-auto py-4 text-center">
-                                    <button className="btn btn-info col-2 submit-button-css"
-                                        onClick={submitPassChange}>
-                                        Submit
-                                </button>
-
+                                <div className="form-group d-flex justify-content-center mt-4 mx-auto py-4 w-75">
+                                    <LoaderButton className="button-width-css" type="button" onClick={submitPassChange}
+                                        isLoading={isLoading}>
+                                        Submit &nbsp;
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>
+                                    </LoaderButton>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <Toast toast={toast} settoast={settoast} />
 
         </>
     )

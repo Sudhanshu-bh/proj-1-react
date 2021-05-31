@@ -195,7 +195,7 @@ function Login() {
 
             <form className="container form">
                 <div className="row">
-                    <div className="col-md-6 login-form-1 mx-auto my-5 border border-primary rounded shadow">
+                    <div className="col-md-9 col-lg-6 login-form-1 mx-auto my-5 border border-primary rounded shadow">
                         <h3 className="m-5 text-center">Login</h3>
 
                         <div className="form-group mb-3">
@@ -244,8 +244,8 @@ function Login() {
                             <a href="/#" className="d-block mb-4 ">Forgot Password?</a>
                         </div>
 
-                        <div className="form-group mb-5 pb-2 text-center">
-                            <LoaderButton block size="lg" className="px-4 button-width-css" type="submit" onClick={submit}
+                        <div className="form-group mb-5 pb-2 d-flex justify-content-center">
+                            <LoaderButton type="submit" onClick={submit}
                                 isLoading={isLoading}>
                                 Login &nbsp;
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -254,6 +254,7 @@ function Login() {
                                 </svg>
                             </LoaderButton>
                         </div>
+
                     </div>
                 </div>
 
