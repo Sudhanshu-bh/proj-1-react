@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import './ChangePassword.css'
-import DashboardHeader from './DashboardHeader'
-import { SidenavContext } from './SidenavContext'
+import Header from './components/Header'
+import { SidenavContext } from './components/SidenavContext'
 
 function ChangePassword() {
 
@@ -187,7 +187,7 @@ function ChangePassword() {
 
     return (
         <>
-            <DashboardHeader />
+            <Header />
 
             <div className={`main-content-css ${SidenavOpen ? "shift" : "center"}`}>
                 <div className="container form mt-5 change-password">

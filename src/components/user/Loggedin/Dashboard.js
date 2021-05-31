@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import DashboardHeader from './DashboardHeader'
-import { SidenavContext } from './SidenavContext'
+import Header from './components/Header'
+import { SidenavContext } from './components/SidenavContext'
 
 function Dashboard() {
 
@@ -8,13 +8,13 @@ function Dashboard() {
 
     return (
         <>
-            <DashboardHeader />
+            <Header />
 
             <div className={`main-content-css ${SidenavOpen ? "shift" : "center"}`}>
-            <div className="p-4 m-auto">
-                <span className="h4">Welcome to dashboard.</span>
+                <div className="p-4 m-auto">
+                    <span className="h4">Welcome to dashboard.</span>
 
-            </div>
+                </div>
             </div>
 
         </>
