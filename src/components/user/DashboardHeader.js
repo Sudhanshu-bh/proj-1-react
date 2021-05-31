@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import { Link,useHistory } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import './DashboardHeader.css'
+import {SidenavContext} from './SidenavContext'
 
-function DashboardHeader() {
+function DashboardHeader(props) {
 
     const history = useHistory();
 
-    const [SidenavOpen, setSidenavOpen] = useState(false);
+    const [SidenavOpen, setSidenavOpen] = useContext(SidenavContext)
 
     function validateFirst() {
         let logged = localStorage.getItem('isLoggedInLS');
@@ -57,7 +58,7 @@ function DashboardHeader() {
 
             {/* Sidebar */}
             
-            <div className={`w3-bar-block w3-border-right sidebar-custom-css ${SidenavOpen ? "mySidebarOpened" : "mySidebarClosed"}`}>
+            <div className={`w3-bar-block sidebar-custom-css ${SidenavOpen ? "mySidebarOpened w3-border-right" : "mySidebarClosed"}`}>
                 <button onClick={sidenav_close} className="w3-bar-item w3-large">Close &times;</button>
                 <Link to="/dashboard" style={{color:"inherit", textDecoration:"none"}}>
                     <button className="w3-bar-item w3-button">Dashboard</button>

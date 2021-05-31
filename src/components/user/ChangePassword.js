@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react'
 import './ChangePassword.css'
 import DashboardHeader from './DashboardHeader'
+import { SidenavContext } from './SidenavContext'
 
 function ChangePassword() {
 
@@ -21,6 +22,8 @@ function ChangePassword() {
     const [invalidNewPassMsg, setinvalidNewPassMsg] = useState("")
     const [PasswordsDontMatch, setPasswordsDontMatch] = useState("")
 
+    const [SidenavOpen] = useContext(SidenavContext)
+
     function store(item, type) {
 
         let itemValue = item.target.value;
@@ -37,7 +40,7 @@ function ChangePassword() {
                 setinvalidNewPassMsg("")
                 setnewPass1InputRed(false)
                 setnewPass1InputGreen(false)
-                
+
                 setnewPass2InputRed(false)
                 setnewPass2InputGreen(false)
                 break
@@ -57,8 +60,8 @@ function ChangePassword() {
     }
 
     function validateCurrPass() {
-        
-        if(currPassword === "") {
+
+        if (currPassword === "") {
             setcurrPassInputRed(true)
             setinvalidCurrPassMsg("Please enter your current password.")
             return
@@ -76,7 +79,7 @@ function ChangePassword() {
 
         let response;
         let resStatus = 0;
-        (async function() {
+        (async function () {
             try {
                 response = await fetch(url, params);
 
@@ -104,9 +107,9 @@ function ChangePassword() {
     }
 
     function checkNewPass1() {
-        if(newPassword1 !== "") {
+        if (newPassword1 !== "") {
             setnewPass1InputGreen(true)
-            
+
             return 1
         }
         else {
@@ -117,14 +120,14 @@ function ChangePassword() {
     }
 
     function checkNewPassMatch() {
-        if(!checkNewPass1())
+        if (!checkNewPass1())
             return
 
-        if(newPassword1 === newPassword2)
+        if (newPassword1 === newPassword2)
             setnewPass2InputGreen(true)
         else {
             setnewPass2InputRed(true)
-            if(newPassword2 === "")
+            if (newPassword2 === "")
                 setPasswordsDontMatch("Please re-enter the new password.")
             else {
                 setPasswordsDontMatch("Please re-enter the same new password here.")
@@ -136,7 +139,7 @@ function ChangePassword() {
 
         event.preventDefault();
 
-        if(newPassword1 !== newPassword2) {
+        if (newPassword1 !== newPassword2) {
             alert("New passwords do not match!")
             return
         }
@@ -155,7 +158,7 @@ function ChangePassword() {
         let response;
         let resStatus = 0;
 
-        (async function() {
+        (async function () {
             try {
                 response = await fetch(url, params);
 
@@ -179,64 +182,66 @@ function ChangePassword() {
                 console.log("Failure, there was some error...", error);
             }
         })()
-        
+
     }
 
     return (
         <>
             <DashboardHeader />
 
-            <div className={`container form mt-5 change-password main-content-css ${DashboardHeader.SidenavOpen ? "shift" : "center"}`}>
-                <div className="row">
-                    <div className="col-md-9 login-form-1 mx-auto my-1 border border-primary rounded shadow">
-                        <div className="col-12 text-center p-4">
-                            <h3>Change Password</h3>
+            <div className={`main-content-css ${SidenavOpen ? "shift" : "center"}`}>
+                <div className="container form mt-5 change-password">
+                    <div className="row">
+                        <div className="col-md-9 login-form-1 mx-auto my-1 border border-primary rounded shadow">
+                            <div className="col-12 text-center p-4">
+                                <h3>{SidenavOpen} Change Password</h3>
 
-                            <div className="row form-group mt-5 d-flex align-items-center justify-content-center">
-                                <label htmlFor="currPass" className="form-label label-custom-css">
-                                    Current Password
+                                <div className="row form-group mt-5 d-flex align-items-center justify-content-center">
+                                    <label htmlFor="currPass" className="form-label label-custom-css">
+                                        Current Password
                                 </label>
-                                <input type="password" className={`form-control input-custom-css ${currPassInputRed ? "input-red" : ""} ${currPassInputGreen ? "input-green" : ""}`}
-                                    onChange={(item) => store(item, "currPassword")}
-                                    onBlur={validateCurrPass}
-                                    aria-describedby="basic-addon1" placeholder="Enter current password"
-                                />
-                                <div className="just-for-rendering"> &nbsp; </div>
-                                <div className="invalid-input-msg">{invalidCurrPassMsg} &nbsp; </div>
-                            </div>
+                                    <input type="password" className={`form-control input-custom-css ${currPassInputRed ? "input-red" : ""} ${currPassInputGreen ? "input-green" : ""}`}
+                                        onChange={(item) => store(item, "currPassword")}
+                                        onBlur={validateCurrPass}
+                                        aria-describedby="basic-addon1" placeholder="Enter current password"
+                                    />
+                                    <div className="just-for-rendering"> &nbsp; </div>
+                                    <div className="invalid-input-msg">{invalidCurrPassMsg} &nbsp; </div>
+                                </div>
 
-                            <div className="row form-group mt-4 d-flex align-items-center justify-content-center">
-                                <label htmlFor="currPass" className="form-label label-custom-css">
-                                    New Password
+                                <div className="row form-group mt-4 d-flex align-items-center justify-content-center">
+                                    <label htmlFor="currPass" className="form-label label-custom-css">
+                                        New Password
                                 </label>
-                                <input type="password" className={`form-control input-custom-css ${newPass1InputRed ? "input-red" : ""} ${newPass1InputGreen ? "input-green" : ""}`}
-                                    onChange={(item) => store(item, "newPassword1")}
-                                    onBlur={checkNewPass1}
-                                    aria-describedby="basic-addon2" placeholder="Enter new password"
-                                />
-                                <div className="just-for-rendering"> &nbsp; </div>
-                                <div className="invalid-input-msg">{invalidNewPassMsg} &nbsp; </div>
-                            </div>
+                                    <input type="password" className={`form-control input-custom-css ${newPass1InputRed ? "input-red" : ""} ${newPass1InputGreen ? "input-green" : ""}`}
+                                        onChange={(item) => store(item, "newPassword1")}
+                                        onBlur={checkNewPass1}
+                                        aria-describedby="basic-addon2" placeholder="Enter new password"
+                                    />
+                                    <div className="just-for-rendering"> &nbsp; </div>
+                                    <div className="invalid-input-msg">{invalidNewPassMsg} &nbsp; </div>
+                                </div>
 
-                            <div className="row form-group mt-4 d-flex align-items-center justify-content-center">
-                                <label htmlFor="currPass" className="form-label label-custom-css">
-                                    Confirm New Password
+                                <div className="row form-group mt-4 d-flex align-items-center justify-content-center">
+                                    <label htmlFor="currPass" className="form-label label-custom-css">
+                                        Confirm New Password
                                 </label>
-                                <input type="password" className={`form-control input-custom-css ${newPass2InputRed ? "input-red" : ""} ${newPass2InputGreen ? "input-green" : ""}`}
-                                    onChange={(item) => store(item, "newPassword2")}
-                                    onBlur={checkNewPassMatch}
-                                    aria-describedby="basic-addon3" placeholder="Re-enter new password"
-                                />
-                                <div className="just-for-rendering"> &nbsp; </div>
-                                <div className="invalid-input-msg">{PasswordsDontMatch} &nbsp; </div>
-                            </div>
+                                    <input type="password" className={`form-control input-custom-css ${newPass2InputRed ? "input-red" : ""} ${newPass2InputGreen ? "input-green" : ""}`}
+                                        onChange={(item) => store(item, "newPassword2")}
+                                        onBlur={checkNewPassMatch}
+                                        aria-describedby="basic-addon3" placeholder="Re-enter new password"
+                                    />
+                                    <div className="just-for-rendering"> &nbsp; </div>
+                                    <div className="invalid-input-msg">{PasswordsDontMatch} &nbsp; </div>
+                                </div>
 
-                            <div className="form-group mt-4 mx-auto py-4 text-center">
-                                <button className="btn btn-info col-2 submit-button-css"
-                                    onClick={submitPassChange}>
-                                    Submit
+                                <div className="form-group mt-4 mx-auto py-4 text-center">
+                                    <button className="btn btn-info col-2 submit-button-css"
+                                        onClick={submitPassChange}>
+                                        Submit
                                 </button>
 
+                                </div>
                             </div>
                         </div>
                     </div>

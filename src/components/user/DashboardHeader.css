@@ -2,6 +2,8 @@
     --navbarHeight: 61px;
   }
   
+/* Sidenav CSS */
+
   .sidebar-custom-css {
     height: calc(100% - var(--navbarHeight));
     top: var(--navbarHeight);
@@ -36,7 +38,10 @@
   
   .sidebar-custom-css {
     background-color:deepskyblue;
+    z-index: 1;
   }
+
+/* Header CSS */
 
   .page-header {
     background: white;
@@ -57,8 +62,8 @@
   .settings-icon {
     width: 100%;
   }
-
   
+  /* CSS for main content of any page */
   
   .main-content-css {
     position: absolute;
@@ -69,8 +74,10 @@
 
   .main-content-css.shift {
     width: 82%!important;
+    transition: width 0.4s;
   }
 
   .main-content-css.center {
     width: 100%;
+    transition: width 0.3s;
   }
