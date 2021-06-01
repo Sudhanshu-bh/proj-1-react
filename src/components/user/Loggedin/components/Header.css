@@ -23,27 +23,31 @@
   .mySidebarOpened {
     border-right: 1px solid var(--bs-primary);
     width: 17%;
-    transition: width 0.4s;
+    opacity: 1;
+    transition: 0.4s;
   }
   
   @media screen and (max-width: 576px) {
     .mySidebarOpened {
       width: 92%;
-      transition: width 0.3s;
+      opacity: 1;
+      transition: 0.3s;
     }
   }
 
   @media screen and (max-width: 800px) {
     .mySidebarOpened {
       width: 30%;
-      transition: width 0.3s;
+      opacity: 1;
+      transition: 0.3s;
     }
   }
 
   .mySidebarClosed.w3-bar-block {
     width: 0;
+    opacity: 0;
     height: calc(100% - var(--navbarHeight));
-    transition: width 0.3s;
+    transition: 0.3s;
   }
   
   .sidebar-custom-css {
@@ -54,12 +58,14 @@
   .sidenav-dropdown.hide {
     line-height:0;
     height: 0;
+    opacity: 0;
     overflow: hidden;
   }
 
   .sidenav-dropdown.show {
     height: initial;
-    transition: 0.2s;
+    opacity: 1;
+    transition: 0.3s;
   }
 
   .sidenav-dropdown * {
