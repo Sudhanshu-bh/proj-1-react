@@ -28,7 +28,7 @@
   
   @media screen and (max-width: 576px) {
     .mySidebarOpened {
-      width: 100%;
+      width: 92%;
       transition: width 0.3s;
     }
   }
@@ -49,6 +49,22 @@
   .sidebar-custom-css {
     background-color:white;
     z-index: 1;
+  }
+
+  .sidenav-dropdown.hide {
+    line-height:0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .sidenav-dropdown.show {
+    height: initial;
+    transition: 0.2s;
+  }
+
+  .sidenav-dropdown * {
+    background-color: rgb(190, 205, 255);
+    color: rgb(68, 68, 68);
   }
 
 /* Header CSS */
