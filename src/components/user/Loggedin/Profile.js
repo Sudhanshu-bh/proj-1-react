@@ -1,26 +1,25 @@
 import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-import LoaderButton from '../LoaderButton'
-import Header from './components/Header'
 import { SidenavContext } from './components/SidenavContext'
+import './CommonCss.css'
+import Header from './components/Header'
+import LoaderButton from '../LoaderButton'
+import Toast from '../../resuable/Toast'
 
 let Details;
 
-function Display({display}) {
+function Display({display, toast, settoast}) {
   if(display === "loader") {
     return (
-      <div className="d-flex h-100 align-items-center justify-content-center">
-        <LoaderButton isLoading={true} className="m-auto" style={{width: "12rem"}}>Loading</LoaderButton>
+      <div className="d-flex justify-content-center">
+        <LoaderButton isLoading={true} className="m-auto" style={{width: "12rem", border: "none"}}>Loading</LoaderButton>
       </div>
     )
   } else if(display === "profile details") {
     return <ProfileMainContent userDetails={Details}/>
   } else if(display === "error") {
-    return (
-      <div className="text-danger text-white">
-        Something went wrong!!
-      </div>
-    )
+    settoast({text:"Something went wrong. Please try again later.", type: "danger"})
+    return <Toast toast={toast} settoast={settoast} />
   }
 }
 
@@ -48,6 +47,8 @@ function ProfileMainContent({userDetails}) {
           <div className="col-9">{userDetails.Address}</div>
         </div>
 
+        {/* Try to use map */}
+
       </div>
     </>
   )
@@ -60,6 +61,7 @@ function Profile() {
   const [SidenavOpen] = useContext(SidenavContext)
 
   const [display, setdisplay] = useState("loader")
+  const [toast, settoast] = useState({text:"", type: ""})
 
   function fetchProfile() {
     let data = {};
@@ -101,11 +103,12 @@ function Profile() {
             break;
         }
       } catch (error) {
-        console.log("Failure, there was some error...", error);
+        // setdisplay("error")
+        console.log("Error, unable to send request.", error);
       }
     })()
   }
-  fetchProfile();
+  
 
   return (
     <>
@@ -114,9 +117,10 @@ function Profile() {
 
       <div className={`main-content-css ${SidenavOpen ? "shift" : "center"}`}>
         <div className="m-4">
-          <h2>User profile</h2>
+          <h3 className="main-content-heading">User profile</h3>
 
-          <Display display={display}/>
+          {fetchProfile()}
+          <Display display={display} toast={toast} settoast={settoast}/>
 
         </div>
       </div>

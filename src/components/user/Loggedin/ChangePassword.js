@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import './ChangePassword.css'
+import './CommonCss.css'
 import Header from './components/Header'
 import { SidenavContext } from './components/SidenavContext'
 import LoaderButton from '../LoaderButton'
@@ -26,7 +27,7 @@ function ChangePassword() {
 
     const [isLoading, setisLoading] = useState(false)
 
-    const [toast, settoast] = useState({text:"", type: "success"})  // type can be success, danger, or anything else.
+    const [toast, settoast] = useState({ text: "", type: "success" })  // type can be success, danger, or anything else.
 
     const [SidenavOpen] = useContext(SidenavContext)
 
@@ -174,13 +175,13 @@ function ChangePassword() {
 
                 switch (resStatus) {
                     case 200:
-                        settoast({text: "Password changed successfully!", type: "success"})
+                        settoast({ text: "Password changed successfully!", type: "success" })
                         break
                     case 401:
                         setinvalidCurrPassMsg("Please enter the correct password of your account.")
                         break
                     case 500:
-                        settoast({text: "Something went wrong. Please try again later.", type: "danger"})
+                        settoast({ text: "Something went wrong. Please try again later.", type: "danger" })
                         break
                     default:
                         console.log("Default (unhandled) case.")
@@ -202,13 +203,13 @@ function ChangePassword() {
                 <div className="container form mt-5 change-password">
                     <div className="row">
                         <div className="col-md-9 login-form-1 mx-auto my-1 border border-primary rounded shadow">
-                            <div className="col-12 text-center p-4">
-                                <h3>{SidenavOpen} Change Password</h3>
+                            <div className="m-4">
+                                <h3 className="main-content-heading">Change Password</h3>
 
                                 <div className="row form-group mt-5 d-flex align-items-center justify-content-center">
                                     <label htmlFor="currPass" className="form-label label-custom-css">
                                         Current Password
-                                </label>
+                                    </label>
                                     <input type="password" className={`form-control input-custom-css ${currPassInputRed ? "input-red" : ""} ${currPassInputGreen ? "input-green" : ""}`}
                                         onChange={(item) => store(item, "currPassword")}
                                         onBlur={validateCurrPass}
@@ -244,12 +245,12 @@ function ChangePassword() {
                                     <div className="invalid-input-msg">{PasswordsDontMatch} &nbsp; </div>
                                 </div>
 
-                                <div className="form-group d-flex justify-content-center mt-4 mx-auto py-4 w-75">
+                                <div className="form-group d-flex justify-content-center mt-4 mb-3 mx-auto py-4 w-75">
                                     <LoaderButton className="button-width-css" type="button" onClick={submitPassChange}
                                         isLoading={isLoading}>
                                         Submit &nbsp;
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                         </svg>
                                     </LoaderButton>
                                 </div>
